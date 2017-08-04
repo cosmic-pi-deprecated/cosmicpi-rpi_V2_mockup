@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+
+<body>
+	<p>Temperature: <span id="temperature">undefined</span></p>
+	
+	<p>Pressure: <span id="pressure">undefined</span></p>
+
+
+	<script>
+	let ws = new WebSocket('ws://' + window.location.hostname + ':9000');
+
+	ws.onopen = (event) => {
+  		console.log(event);
+	}
+
+	ws.onmessage = (event) => {
+		let data = JSON.parse(event.data);
+		for (let key in data) {
+			console.log(key);
+			document.getElementById(key).innerHTML = data[key];
+		}
+	}
+	</script>
+</body>
+</html>
