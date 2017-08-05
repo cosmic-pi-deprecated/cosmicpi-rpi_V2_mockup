@@ -6,6 +6,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #222;
 }
 
 .huge {
@@ -16,7 +17,6 @@ body {
     float: left;
     width: var(--sidebar-width);
     height: 100%;
-    background-color: #222;
     border-right: 1px solid #111;
 }
 
@@ -62,7 +62,9 @@ body {
 #content {
     padding: 16px;
     float: left;
-    width: calc(100% - var(--sidebar-width) - 20px);
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100%;
+    background-color: white;
 }
 
 @media(max-width:768px) {
@@ -73,7 +75,7 @@ body {
     #content {
         padding: 16px;
         float: left;
-        width: calc(100% - var(--mobile-sidebar-width) - 10px);
+        width: calc(100% - var(--mobile-sidebar-width));
     }
 
     #sidebar #logo {
