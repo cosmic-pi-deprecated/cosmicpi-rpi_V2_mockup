@@ -105,7 +105,7 @@
                                         <i class="fa fa-thermometer-quarter fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="temperature"></div>
+                                        <div class="huge" id="temperature">NA</div>
                                         <div>Temperature</div>
                                     </div>
                                 </div>
@@ -121,7 +121,7 @@
                                         <i class="fa fa-thermometer-full fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="pressure"></div>
+                                        <div class="huge" id="pressure">NA</div>
                                         <div>Pressure</div>
                                     </div>
                                 </div>
@@ -129,6 +129,21 @@
                         </div>
                     </div>
 
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-magnet fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="magnetism">NA</div>
+                                        <div>Magnetism</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="col-lg-6">
@@ -138,11 +153,22 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                    <canvas id="tempChart" width="100%" height="100%"></canvas>
+                                    <canvas id="tempChart" style="width: 100%; height: 300px"></canvas>
                             </div>
                         </div>
                     </div>
 
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Location
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="location" style="width: 100%; height: 300px"></div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -163,6 +189,8 @@
 	<!-- Custom Theme JavaScript -->
 	<script src="js/startmin.js"></script>
     <script src="js/chart.min.js"></script>
+    <script src="js/khtml_all.js"></script>
+    <script src="js/events.js"></script>
 
 
     <script src="js/cosmicpi.js"></script>

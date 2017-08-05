@@ -5,12 +5,8 @@ from EventEmitter import EventEmitter
 
 
 class SingleClientHandler(WebSocket):
-    def sendDataValue(self, key, value):
-        message = json.dumps({'data': { key: value }})
-        self.sendMessage(message)
-
-    def sendControlValue(self, key, value):
-        message = json.dumps({'control': { key: value }})
+    def sendValue(self, key, value):
+        message = json.dumps({ key: value })
         self.sendMessage(message)
 
     # @override
@@ -20,8 +16,11 @@ class SingleClientHandler(WebSocket):
     # @override
     def handleConnected(self):
         print('New client connected:', self.address)
-        EventEmitter.get().on_temperature += lambda x: self.sendDataValue('temperature', x)
-        EventEmitter.get().on_pressure += lambda x: self.sendDataValue('pressure', x)
+        self.sendValue('location', {'latitude': 46.2044, 'longitude': 6.1432});
+
+        EventEmitter.get().on_temperature += lambda x: self.sendValue('temperature', x)
+        EventEmitter.get().on_pressure += lambda x: self.sendValue('pressure', x)
+        EventEmitter.get().on_magnetism += lambda x: self.sendValue('magnetism', x)
 
     # @override
     def handleClose(self):

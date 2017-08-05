@@ -17,6 +17,7 @@ class DummyDataGeneratorHandler(object):
             time.sleep(0.2)
             EventEmitter.get().on_temperature(round(random.uniform(20, 30), 2))
             EventEmitter.get().on_pressure(round(random.uniform(950, 1100), 2))
+            EventEmitter.get().on_magnetism(round(random.uniform(0, 1), 2))
 
 class DummyDataGenerator(object):
     @staticmethod
