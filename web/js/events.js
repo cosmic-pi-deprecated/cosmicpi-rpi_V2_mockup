@@ -26,11 +26,17 @@ if (typeof Array.prototype.indexOf === 'function') {
 /* Polyfill EventEmitter. */
 var EventEmitter = function () {
     this.events = {};
+    this.lastEvents = {};
 };
 
 EventEmitter.prototype.on = function (event, listener) {
     if (typeof this.events[event] !== 'object') {
         this.events[event] = [];
+    }
+
+    if (this.lastEvents[event] !== undefined) {
+        console.log(this.lastEvents[event]);
+        listener.apply(this.lastEvents[event].context, this.lastEvents[event].args);
     }
 
     this.events[event].push(listener);
@@ -50,6 +56,8 @@ EventEmitter.prototype.removeListener = function (event, listener) {
 
 EventEmitter.prototype.emit = function (event) {
     var i, listeners, length, args = [].slice.call(arguments, 1);
+
+    this.lastEvents[event] = { context: this, args: args };
 
     if (typeof this.events[event] === 'object') {
         listeners = this.events[event].slice();

@@ -3,10 +3,27 @@
     --mobile-sidebar-width: 50px;
 }
 
-body {
+html {
+    height: 100%;
+}
+
+body, #app {
     margin: 0;
     padding: 0;
+    height: 100%;
     background-color: #222;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../images/background_mountains.jpg');
+
+}
+
+hr {
+    height: 1px;
+    margin: 10px 10px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .huge {
@@ -27,42 +44,48 @@ body {
 
 #sidebar ul li {
     text-decoration: none;
-    padding: 10px 16px;
-
-    color: #ddd;
     width: 100%;
     margin: 0;
     list-style: none;
-    font-size: 18px;
 }
 
 #sidebar ul li i {
     padding-right: 10px;
 }
 
-#sidebar ul a:hover, #sidebar ul a {
+#sidebar ul a {
+    padding: 10px 16px;
     text-decoration: none;
     width: 100%;
-    display:block;
-    color: #999;
-}
-
-#sidebar ul li {
+    display: block;
+    color: #ddd;
+    font-size: 18px;
     transition: padding 0.2s;
 }
 
-#sidebar ul li:hover {
-    background: #111;
+#sidebar ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     padding-left: 30px;
 }
 
+.router-link-exact-active {
+    color: #2e6da4 !important;
+}
+
+
+
 
 #sidebar #logo {
     width: 100%;
-    padding: 5px 0;
-    background: #111;
+    padding: 5px 10px;
     margin-bottom: 20px;
+}
+
+#sidebar p {
+    color: #bbb;
+    padding: 8px;
+    text-align: center;
 }
 
 #content {
@@ -71,6 +94,10 @@ body {
     width: calc(100% - var(--sidebar-width));
     min-height: 100%;
     background-color: white;
+}
+
+.component-content {
+    padding: 4px 20px;
 }
 
 @media(max-width:768px) {
@@ -88,7 +115,7 @@ body {
         display: none;
     }
 
-    #sidebar .caption {
+    #sidebar .hideable {
         display: none;
     }
 }
