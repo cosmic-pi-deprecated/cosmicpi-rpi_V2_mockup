@@ -20,7 +20,8 @@ IMU_SETTINGS_FILE = "IMU_settings"
 imu = sensors.IMU_Reader(IMU_SETTINGS_FILE)
 
 # set up and start the GPS
-location = sensors.GPS_location_provider()
+#location = sensors.GPS_location_provider()
+location = sensors.IP_location_provider()
 
 # start our detector
 detector = detectors.simulated_detector()

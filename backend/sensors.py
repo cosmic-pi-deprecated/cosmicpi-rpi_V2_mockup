@@ -4,8 +4,23 @@ import time
 import os.path
 import RTIMU
 from gpspy3 import gps
+import requests
+import json
 
 
+def getserial():
+    # Extract serial from cpuinfo file
+    cpuserial = "0000000000000000"
+    try:
+        f = open('/proc/cpuinfo','r')
+        for line in f:
+            if line[0:6]=='Serial':
+                cpuserial = line[10:26]
+        f.close()
+    except:
+        cpuserial = "ERROR000000000"
+
+    return cpuserial
 
 class IMU_Reader():
 
@@ -113,6 +128,34 @@ class location_provider():
     def get_last_location_data(self):
         with self.output_lock:
             return copy.deepcopy(self.location_data)
+
+class IP_location_provider(location_provider, threading.Thread):
+    def __init__(self):
+        location_provider.__init__(self, "freegeoip")
+        threading.Thread.__init__(self)
+        # start our own thread
+        self.start()
+
+    def run(self):
+        while True:
+            send_url = 'http://freegeoip.net/json'
+            r = requests.get(send_url)
+            j = json.loads(r.text)
+            lat = j['latitude']
+            lon = j['longitude']
+            internal_localion_data = {}
+            internal_localion_data['lon'] = lon
+            internal_localion_data['lat'] = lat
+            internal_localion_data['alt'] = 0
+            internal_localion_data['err_lon_meter'] = 500
+            internal_localion_data['err_lat_meter'] = 500
+            internal_localion_data['err_alt_meter'] = 500
+            internal_localion_data['update_time_string'] = "NoTimeInGeoIP!"
+            internal_localion_data['_internal_timestamp'] = time.time()
+            # update our loc data
+            self._update_location_data(internal_localion_data)
+            time.sleep(5)
+
 
 
 class GPS_location_provider(location_provider, threading.Thread):
