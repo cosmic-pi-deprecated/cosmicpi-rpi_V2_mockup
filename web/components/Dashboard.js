@@ -32,22 +32,6 @@ window.Dashboard = Vue.component('dashboard', {
                 </div>
             </div>
         </div>
-    
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-magnet fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">{{ magnetismValue }}</div>
-                            <div>Magnetism</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         
         <div>
         <div class="col-lg-4 col-md-6">
@@ -109,7 +93,6 @@ window.Dashboard = Vue.component('dashboard', {
         return {
             temperatureValue: 'NA',
             pressureValue: 'NA',
-            magnetismValue: 'NA',
             serialValue: 'NA'
         }
     },
@@ -118,7 +101,6 @@ window.Dashboard = Vue.component('dashboard', {
         this.initTemperatureBox();
         this.initTemperatureGraph();
         this.initCombinedEventCountGraph();
-        this.initMagnetismBox();
         this.initSerialBox();
         this.initLocationMap();
         this.initPressureBox();
@@ -128,12 +110,6 @@ window.Dashboard = Vue.component('dashboard', {
         initPressureBox() {
             events.on('pressure', (value) => {
                 this.pressureValue = value;
-            });
-        },
-
-        initMagnetismBox() {
-            events.on('magnetism', (value) => {
-                this.magnetismValue = value;
             });
         },
 
