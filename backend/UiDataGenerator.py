@@ -44,6 +44,9 @@ class UiDataGenerator(object):
         # get detector data
         EventEmitter.get().on_combined_event_count(float(data['event_counter_AB']))
 
+        # push the serial
+        EventEmitter.get().on_serial(self._serial)
+
         # old printing
         print("Fresh new data now at the detector!")
         print(data)
@@ -55,11 +58,13 @@ class UiDataGenerator(object):
         # print imu data
         self._imu.print_IMU_and_pressure_data(IMU_data)
 
-    def __init__(self, detector, imu, location):
+    def __init__(self, detector, imu, location, serial):
         # the function must recieve an already initalized detector, imu and gps
         self._detector = detector
         self._imu = imu
         self._location = location
+        self._serial = serial
+
 
     def subscribe_to_detector(self):
         self._detector.on_publish_new_data += self._push_data_to_UI

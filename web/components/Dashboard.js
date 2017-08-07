@@ -48,6 +48,23 @@ window.Dashboard = Vue.component('dashboard', {
                 </div>
             </div>
         </div>
+        
+        <div>
+        <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-microchip fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ serialValue }}</div>
+                            <div>Hardware Serial</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     
     
         <div class="col-lg-6">
@@ -92,7 +109,8 @@ window.Dashboard = Vue.component('dashboard', {
         return {
             temperatureValue: 'NA',
             pressureValue: 'NA',
-            magnetismValue: 'NA'
+            magnetismValue: 'NA',
+            serialValue: 'NA'
         }
     },
 
@@ -101,6 +119,7 @@ window.Dashboard = Vue.component('dashboard', {
         this.initTemperatureGraph();
         this.initCombinedEventCountGraph();
         this.initMagnetismBox();
+        this.initSerialBox();
         this.initLocationMap();
         this.initPressureBox();
     },
@@ -115,6 +134,12 @@ window.Dashboard = Vue.component('dashboard', {
         initMagnetismBox() {
             events.on('magnetism', (value) => {
                 this.magnetismValue = value;
+            });
+        },
+
+        initSerialBox() {
+            events.on('serial', (value) => {
+                this.serialValue = value;
             });
         },
 

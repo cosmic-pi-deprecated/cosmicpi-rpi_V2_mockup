@@ -26,6 +26,6 @@ location = sensors.GPS_location_provider()
 detector = detectors.simulated_detector()
 
 # start generator and subscribe to the detector
-UiGenerator = UiDataGenerator(detector, imu, location)
+UiGenerator = UiDataGenerator(detector, imu, location, sensors.getserial())
 UiGenerator.subscribe_to_detector()
 
