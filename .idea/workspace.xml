@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dcabbad-6539-444c-b6b6-f9c04c3bdcb8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/detectors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/sensors.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ui.iml" afterPath="$PROJECT_DIR$/.idea/ui.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/App.py" afterPath="$PROJECT_DIR$/backend/App.py" />
+    <list default="true" id="3dcabbad-6539-444c-b6b6-f9c04c3bdcb8" name="Default" comment="Added connection to IMU and gps, as well added the simulated detector from: https://github.com/HenniOVP/CosmicPi_dev_HB">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/ui.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,27 +19,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/cosmicpi_ui$App.coverage" NAME="App Coverage Results" MODIFIED="1502110922622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/cosmicpi_ui$App.coverage" NAME="App Coverage Results" MODIFIED="1502119278073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DummyDataGenerator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/DummyDataGenerator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UiDataGenerator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UiDataGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/UiDataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+            <state relative-caret-position="950">
+              <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -48,8 +36,8 @@
       <file leaf-file-name="App.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/App.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="475">
+              <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -57,12 +45,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="sensors.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/sensors.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2250">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="3100">
+              <caret line="131" column="26" lean-forward="false" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,13 +77,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StaticContentServer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/StaticContentServer.py">
+      <file leaf-file-name="Dashboard.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/components/Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+            <state relative-caret-position="2825">
+              <caret line="113" column="10" lean-forward="false" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <marker date="1502119272857" expanded="true" signature="72:1333" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="72:3190" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="112:693" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="158:678" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="202:659" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="240:636" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="287:394" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="452:609" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="738:1310" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="784:1295" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="828:1276" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="866:1253" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="913:1017" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1075:1226" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1333:3187" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1373:1943" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1419:1928" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1463:1909" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1501:1886" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1548:1645" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1703:1859" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="1984:2356" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2030:2341" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2074:2129" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2211:2322" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2266:2289" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2396:2777" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2442:2762" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2486:2541" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2623:2743" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2687:2710" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2813:3176" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2859:3161" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="2903:2955" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="3037:3142" ph="..." />
+                <marker date="1502119272857" expanded="true" signature="3086:3112" ph="..." />
               </folding>
             </state>
           </provider>
@@ -92,8 +127,8 @@
       <file leaf-file-name="WebSocket.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/WebSocket.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            <state relative-caret-position="525">
+              <caret line="24" column="76" lean-forward="false" selection-start-line="24" selection-start-column="76" selection-end-line="24" selection-end-column="76" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -105,7 +140,7 @@
         <entry file="file://$PROJECT_DIR$/backend/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="25">
-              <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="37" />
+              <caret line="1" column="123" lean-forward="false" selection-start-line="1" selection-start-column="114" selection-end-line="1" selection-end-column="123" />
               <folding />
             </state>
           </provider>
@@ -143,29 +178,37 @@
         <option value="$PROJECT_DIR$/install" />
         <option value="$PROJECT_DIR$/backend/EventEmitter.py" />
         <option value="$PROJECT_DIR$/web/cosmicpi.js" />
-        <option value="$PROJECT_DIR$/backend/Constants.py" />
         <option value="$PROJECT_DIR$/backend/DummyDataGenerator.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/web/css/startmin.css" />
         <option value="$PROJECT_DIR$/web/components/PageNotFound.js" />
         <option value="$PROJECT_DIR$/web/components/About.js" />
-        <option value="$PROJECT_DIR$/web/components/Dashboard.js" />
         <option value="$PROJECT_DIR$/web/components/Settings.js" />
         <option value="$PROJECT_DIR$/web/js/cosmicpi.js" />
         <option value="$PROJECT_DIR$/web/js/events.js" />
         <option value="$PROJECT_DIR$/web/css/cosmicpi.css" />
         <option value="$PROJECT_DIR$/web/index.html" />
-        <option value="$PROJECT_DIR$/backend/WebSocket.py" />
         <option value="$PROJECT_DIR$/run" />
         <option value="$PROJECT_DIR$/backend/StaticContentServer.py" />
+        <option value="$PROJECT_DIR$/backend/Constants.py" />
+        <option value="$PROJECT_DIR$/backend/WebSocket.py" />
+        <option value="$PROJECT_DIR$/backend/sensors.py" />
         <option value="$PROJECT_DIR$/backend/App.py" />
         <option value="$PROJECT_DIR$/backend/UiDataGenerator.py" />
+        <option value="$PROJECT_DIR$/web/components/Dashboard.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -202,6 +245,17 @@
               <item name="cosmicpi-ui" type="b2602c69:ProjectViewProjectNode" />
               <item name="cosmicpi-ui" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cosmicpi-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cosmicpi-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cosmicpi-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cosmicpi-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -358,6 +412,49 @@
       <workItem from="1502037609099" duration="669000" />
       <workItem from="1502052383676" duration="5646000" />
     </task>
+    <task id="LOCAL-00001" summary="Added connection to IMU and gps, as well added the simulated detector from: https://github.com/HenniOVP/CosmicPi_dev_HB">
+      <created>1502111081579</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1502111081579</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added UiDataGenerator">
+      <created>1502112439897</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1502112439897</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added event display">
+      <created>1502116179815</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1502116179815</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added hardware serial to UI">
+      <created>1502118144876</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1502118144876</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added geoIP as an location provider (works in China)">
+      <created>1502118491861</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1502118491861</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Removed magnetism box">
+      <created>1502119340277</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1502119340277</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -365,27 +462,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2039" height="1462" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969758" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16608825" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993559" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993559" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -396,6 +492,15 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added connection to IMU and gps, as well added the simulated detector from: https://github.com/HenniOVP/CosmicPi_dev_HB" />
+    <MESSAGE value="Added UiDataGenerator" />
+    <MESSAGE value="Added event display" />
+    <MESSAGE value="Added hardware serial to UI" />
+    <MESSAGE value="Added geoIP as an location provider (works in China)" />
+    <MESSAGE value="Removed magnetism box" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed magnetism box" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -423,9 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="775">
           <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -451,7 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="75" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -600,24 +701,10 @@
     <entry file="file://$PROJECT_DIR$/web/js/startmin.js" />
     <entry file="file://$PROJECT_DIR$/web/js/flot/jquery.flot.js" />
     <entry file="file://$PROJECT_DIR$/README.md" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/components/PageNotFound.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/components/Dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -667,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -675,51 +761,102 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="75" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run">
+    <entry file="file://$PROJECT_DIR$/backend/data_recording.py" />
+    <entry file="file://$PROJECT_DIR$/backend/StaticContentServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="300">
+          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Constants.py">
+    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/remote_sources/1009576315/-102312246/events/events.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="277">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/WebSocket.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        <state relative-caret-position="525">
+          <caret line="24" column="76" lean-forward="false" selection-start-line="24" selection-start-column="76" selection-end-line="24" selection-end-column="76" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/StaticContentServer.py">
+    <entry file="file://$PROJECT_DIR$/backend/UiDataGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        <state relative-caret-position="950">
+          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/sensors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3100">
+          <caret line="131" column="26" lean-forward="false" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="26" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/data_recording.py">
+    <entry file="file://$PROJECT_DIR$/backend/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="25">
+          <caret line="1" column="123" lean-forward="false" selection-start-line="1" selection-start-column="114" selection-end-line="1" selection-end-column="123" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/components/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2825">
+          <caret line="113" column="10" lean-forward="false" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
+          <folding>
+            <marker date="1502119272857" expanded="true" signature="72:1333" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="72:3190" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="112:693" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="158:678" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="202:659" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="240:636" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="287:394" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="452:609" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="738:1310" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="784:1295" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="828:1276" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="866:1253" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="913:1017" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1075:1226" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1333:3187" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1373:1943" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1419:1928" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1463:1909" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1501:1886" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1548:1645" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1703:1859" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="1984:2356" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2030:2341" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2074:2129" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2211:2322" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2266:2289" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2396:2777" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2442:2762" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2486:2541" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2623:2743" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2687:2710" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2813:3176" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2859:3161" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="2903:2955" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="3037:3142" ph="..." />
+            <marker date="1502119272857" expanded="true" signature="3086:3112" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -733,28 +870,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/App.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        <state relative-caret-position="475">
+          <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/sensors.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2250">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/UiDataGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
