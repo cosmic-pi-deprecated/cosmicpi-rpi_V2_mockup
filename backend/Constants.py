@@ -1,4 +1,4 @@
 class Constants(object):
-    allowed_events = ('on_temperature', 'on_pressure', 'on_magnetism')
+    allowed_events = ('on_temperature', 'on_pressure', 'on_magnetism', 'on_location', 'on_combined_event_count')
     web_socket_port = 9000
     static_content_port = 8080

@@ -93,8 +93,9 @@ class location_provider():
 
     def __init__(self, provider_name):
         self.location_data = {
-                        'lon': 0,
-                        'lat': 0,
+            # coordinates of CERN
+                        'lon': 6.053166454,
+                        'lat': 46.233832398,
                         'alt': 0,
                         'err_lon_meter': 999,
                         'err_lat_meter': 999,

@@ -20,7 +20,12 @@ class SingleClientHandler(WebSocket):
 
         EventEmitter.get().on_temperature += lambda x: self.sendValue('temperature', x)
         EventEmitter.get().on_pressure += lambda x: self.sendValue('pressure', x)
-        EventEmitter.get().on_magnetism += lambda x: self.sendValue('magnetism', x)
+        EventEmitter.get().on_location += lambda x: self.sendValue('location', x)
+        EventEmitter.get().on_combined_event_count += lambda x: self.sendValue('combined_event_count', x)
+
+        # unused
+        #EventEmitter.get().on_magnetism += lambda x: self.sendValue('magnetism', x)
+
 
     # @override
     def handleClose(self):

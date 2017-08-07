@@ -61,6 +61,18 @@ window.Dashboard = Vue.component('dashboard', {
                 </div>
             </div>
         </div>
+        
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Event Count
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <canvas ref="combined_event_count" style="width:100%;height:300px"></canvas>
+                </div>
+            </div>
+        </div>
     
         <div class="col-lg-6">
             <div class="panel panel-default">
@@ -87,6 +99,7 @@ window.Dashboard = Vue.component('dashboard', {
     mounted() {
         this.initTemperatureBox();
         this.initTemperatureGraph();
+        this.initCombinedEventCountGraph();
         this.initMagnetismBox();
         this.initLocationMap();
         this.initPressureBox();
@@ -129,7 +142,7 @@ window.Dashboard = Vue.component('dashboard', {
         },
 
         initTemperatureGraph() {
-            const tempSize = 20;
+            const tempSize = 100;
             let tempData = [];
 
 
@@ -152,6 +165,33 @@ window.Dashboard = Vue.component('dashboard', {
                 }
                 tempData.push(value);
                 tempChart.update();
+            });
+        },
+
+        initCombinedEventCountGraph() {
+            const eventSize = 100;
+            let eventData = [];
+
+
+            let eventChart = new Chart(this.$refs.combined_event_count, {
+                type: 'line',
+                data: {
+                    labels: Array.from(Array(eventSize).keys()),
+                    datasets: [{
+                        label: 'combined_event_count',
+                        data: eventData,
+                        backgroundColor: "rgba(153,51,255,0.4)"
+                    }]
+                }
+            });
+
+            events.on('combined_event_count', (value) => {
+                // Add data to chart
+                if (eventData.length > eventSize) {
+                    eventData.splice(0, 1);
+                }
+                eventData.push(value);
+                eventChart.update();
             });
         }
     }

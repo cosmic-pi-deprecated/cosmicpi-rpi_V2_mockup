@@ -31,28 +31,35 @@ class UiDataGenerator(object):
         IMU_data = self._imu.get_IMU_and_Pressure_data()
         # temperature
         if (IMU_data["temperatureValid"]):
-            EventEmitter.get().on_temperature(round(IMU_data["temperature"]),1)
+            EventEmitter.get().on_temperature(round(IMU_data["temperature"], 2))
         # pressure
         if (IMU_data["pressureValid"]):
-            EventEmitter.get().on_pressure(round(IMU_data["pressure"]),1)
+            EventEmitter.get().on_pressure(round(IMU_data["pressure"], 1))
 
+        # get location data
+        location_data = self._location.get_last_location_data()
+        # TODO: remove a strange bug here!
+        #EventEmitter.get().on_location({'latitude': location_data['lat'], 'longitude': location_data['lon']})
+
+        # get detector data
+        EventEmitter.get().on_combined_event_count(float(data['event_counter_AB']))
 
         # old printing
         print("Fresh new data now at the detector!")
         print(data)
         # print the last GPS data
-        gps_data = self._gps.get_last_location_data()
-        print("--> GPS: ", gps_data)
+        location_data = self._location.get_last_location_data()
+        print("--> GPS: ", location_data)
         # get imu data
         IMU_data = self._imu.get_IMU_and_Pressure_data()
         # print imu data
         self._imu.print_IMU_and_pressure_data(IMU_data)
 
-    def __init__(self, detector, imu, gps):
+    def __init__(self, detector, imu, location):
         # the function must recieve an already initalized detector, imu and gps
         self._detector = detector
         self._imu = imu
-        self._gps = gps
+        self._location = location
 
     def subscribe_to_detector(self):
         self._detector.on_publish_new_data += self._push_data_to_UI
