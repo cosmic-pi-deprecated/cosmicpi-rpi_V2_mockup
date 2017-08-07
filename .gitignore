@@ -1,4 +1,4 @@
-.idea
+.idea/
 backend/__pycache__
 backend/Constants.pyc
 backend/DummyDataGenerator.pyc
