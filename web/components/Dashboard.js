@@ -199,15 +199,16 @@ window.Dashboard = Vue.component('dashboard', {
             const detASize = 100;
             let detAData = [];
             let detBData = [];
+            let labelsArray = Array.from(Array(detASize).keys());
 
 
-            let detAChart = new Chart(this.$refs.ADC_readings, {
+            let ADCChart = new Chart(this.$refs.ADC_readings, {
                 type: 'line',
                 options: {
 					animation: false
 				},
                 data: {
-                    labels: Array.from(Array(detASize).keys()),
+                    labels: labelsArray,
                     datasets: [{
                         label: 'Detector A: ADC measurement',
                         data: detAData,
@@ -225,9 +226,11 @@ window.Dashboard = Vue.component('dashboard', {
                 // empty the original array
                 detAData.splice(0,detAData.length);
                 detBData.splice(0,detBData.length);
+                labelsArray.splice(0,labelsArray.length);
                 detAData.push(...arr[0]);
                 detBData.push(...arr[1]);
-                detAChart.update();
+                labelsArray.push(...Array.from(Array(detAData.length).keys()));
+                ADCChart.update();
             });
         },
 
