@@ -78,23 +78,23 @@ window.Dashboard = Vue.component('dashboard', {
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    Detector ADC readings
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <canvas ref="ADC_readings" style="width:100%;height:300px"></canvas>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     Location
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div ref="location" style="width: 100%; height: 300px"></div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Detector A readings
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <canvas ref="detector_A_readings" style="width:100%;height:300px"></canvas>
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@ window.Dashboard = Vue.component('dashboard', {
         this.initSerialBox();
         this.initLocationMap();
         this.initPressureBox();
-        this.initDetectorAGraph();
+        this.initADCGraph();
     },
 
     methods: {
@@ -195,12 +195,13 @@ window.Dashboard = Vue.component('dashboard', {
             });
         },
 
-        initDetectorAGraph() {
+        initADCGraph() {
             const detASize = 100;
             let detAData = [];
+            let detBData = [];
 
 
-            let detAChart = new Chart(this.$refs.detector_A_readings, {
+            let detAChart = new Chart(this.$refs.ADC_readings, {
                 type: 'line',
                 options: {
 					animation: false
@@ -208,9 +209,13 @@ window.Dashboard = Vue.component('dashboard', {
                 data: {
                     labels: Array.from(Array(detASize).keys()),
                     datasets: [{
-                        label: 'ADC measurement',
+                        label: 'Detector A: ADC measurement',
                         data: detAData,
                         backgroundColor: "rgba(153,51,255,0.4)"
+                    }, {
+                        label: 'Detector B: ADC measurement',
+                        data: detBData,
+                        backgroundColor: "rgba(255,150,0,0.4)"
                     }]
                 }
             });
@@ -220,6 +225,14 @@ window.Dashboard = Vue.component('dashboard', {
                 // empty the original array
                 detAData.splice(0,detAData.length);
                 detAData.push(...arr);
+                detAChart.update();
+            });
+
+            events.on('set_detB_reading', (arr) => {
+                // Add data to chart
+                // empty the original array
+                detBData.splice(0,detBData.length);
+                detBData.push(...arr);
                 detAChart.update();
             });
         },
