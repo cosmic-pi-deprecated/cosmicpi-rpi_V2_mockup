@@ -22,8 +22,7 @@ class SingleClientHandler(WebSocket):
         EventEmitter.get().on_location += lambda x: self.sendValue('location', x)
         EventEmitter.get().on_combined_event_count += lambda x: self.sendValue('combined_event_count', x)
         EventEmitter.get().on_serial += lambda x: self.sendValue('serial', x)
-        EventEmitter.get().set_detA_reading += lambda x: self.sendValue('set_detA_reading', x)
-        EventEmitter.get().set_detB_reading += lambda x: self.sendValue('set_detB_reading', x)
+        EventEmitter.get().set_ADC_readings += lambda x: self.sendValue('set_ADC_readings', x)
 
 
     # @override

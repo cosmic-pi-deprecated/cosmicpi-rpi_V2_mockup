@@ -220,19 +220,13 @@ window.Dashboard = Vue.component('dashboard', {
                 }
             });
 
-            events.on('set_detA_reading', (arr) => {
+            events.on('set_ADC_readings', (arr) => {
                 // Add data to chart
                 // empty the original array
                 detAData.splice(0,detAData.length);
-                detAData.push(...arr);
-                detAChart.update();
-            });
-
-            events.on('set_detB_reading', (arr) => {
-                // Add data to chart
-                // empty the original array
                 detBData.splice(0,detBData.length);
-                detBData.push(...arr);
+                detAData.push(...arr[0]);
+                detBData.push(...arr[1]);
                 detAChart.update();
             });
         },

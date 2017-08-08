@@ -42,8 +42,7 @@ class UiDataGenerator(object):
 
         # get detector data
         EventEmitter.get().on_combined_event_count(float(data['event_counter_AB']))
-        EventEmitter.get().set_detA_reading(data['event_stack_AB'][0])
-        EventEmitter.get().set_detB_reading(data['event_stack_AB'][1])
+        EventEmitter.get().set_ADC_readings(data['event_stack_AB'])
 
         # push the serial
         EventEmitter.get().on_serial(self._serial)
