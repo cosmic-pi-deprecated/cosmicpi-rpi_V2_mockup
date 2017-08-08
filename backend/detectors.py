@@ -47,35 +47,29 @@ class simulated_detector(detector, threading.Thread):
             self._update_detector_data(data)
             self._publish_data_via_event()
 
-    def _generate_event_peak(self, numPeaks):
+    def _generate_stack_for_events(self, numPeaks):
         # some super fancy on the spot thought up peak generation
         # each event should probably have its own list
         # this could probably be done nicer!
-        stack_A = []
-        stack_B = []
-        mid_A = np.random.poisson(int(self.length_of_event_stack / 2), 1)[0]
-        mid_B = np.random.poisson(int(self.length_of_event_stack / 2), 1)[0]
+        stack = []
         for i in range(numPeaks):
+            # set peak position for the stack
+            # the variance of this is probably pure gaussian statistics
+            peak_pos = int(np.random.normal(int(self.length_of_event_stack / 2), 1.0, 1)[0])
+            #peak_pos = np.random.poisson(int(self.length_of_event_stack / 2), 1)[0]
+            # generate peak for stack A
+            # we assume that all readout noise is poisson, which might be a flawed assumption
             for i in range(self.length_of_event_stack):
-                if i < mid_A:
-                    stack_A.append(np.random.poisson(int(100 * self.noise_to_signal_ratio), 1)[0])
-                elif i == mid_A:
-                    stack_A.append(np.random.poisson(int(100), 1)[0])
+                if i < peak_pos:
+                    stack.append(np.random.poisson(int(100 * self.noise_to_signal_ratio), 1)[0])
+                elif i == peak_pos:
+                    stack.append(np.random.poisson(int(100), 1)[0])
                 else:
-                    stack_A.append(np.random.poisson(
-                        int((100 - 100 * self.noise_to_signal_ratio) / (i - mid_A) + 100 * self.noise_to_signal_ratio),
-                        1)[0])
-            for i in range(self.length_of_event_stack):
-                if i < mid_B:
-                    stack_B.append(np.random.poisson(int(100 * self.noise_to_signal_ratio), 1)[0])
-                elif i == mid_B:
-                    stack_B.append(np.random.poisson(int(100), 1)[0])
-                else:
-                    stack_B.append(np.random.poisson(
-                        int((100 - 100 * self.noise_to_signal_ratio) / (i - mid_B) + 100 * self.noise_to_signal_ratio),
+                    stack.append(np.random.poisson(
+                        int((100 - 100 * self.noise_to_signal_ratio) / (i - peak_pos) + 100 * self.noise_to_signal_ratio),
                         1)[0])
 
-        return [np.asarray(stack_A).tolist(), np.asarray(stack_B).tolist()]
+        return np.asarray(stack).tolist()
 
 
     def _get_simulated_detector_data(self):
@@ -85,7 +79,7 @@ class simulated_detector(detector, threading.Thread):
         event_counter_B = np.random.poisson(int(self.average_number_of_events / self.noise_to_signal_ratio), 1)[0]
         event_counter_AB = np.random.poisson(int(self.average_number_of_events), 1)[0]
         # produce event stack
-        event_stack_AB = self._generate_event_peak(event_counter_AB)
+        event_stack_AB = [self._generate_stack_for_events(event_counter_AB), self._generate_stack_for_events(event_counter_AB)]
 
         # return all the stuff
         data_dict = {
