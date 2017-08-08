@@ -3,7 +3,6 @@ import time
 import random
 import threading
 
-
 """
 This module only generates events. `EventEmitter.get()` should be implemented into the core
 of Cosmic Pi application.
@@ -43,6 +42,7 @@ class UiDataGenerator(object):
 
         # get detector data
         EventEmitter.get().on_combined_event_count(float(data['event_counter_AB']))
+        EventEmitter.get().set_detA_reading(data['event_stack_AB'][0])
 
         # push the serial
         EventEmitter.get().on_serial(self._serial)

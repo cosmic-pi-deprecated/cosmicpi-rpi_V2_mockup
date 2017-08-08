@@ -42,7 +42,7 @@ window.Dashboard = Vue.component('dashboard', {
                             <i class="fa fa-microchip fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{ serialValue }}</div>
+                            <div class="huge" style="font-size: 24px">{{ serialValue }}</div>
                             <div>Hardware Serial</div>
                         </div>
                     </div>
@@ -86,7 +86,23 @@ window.Dashboard = Vue.component('dashboard', {
                 </div>
             </div>
         </div>
+        
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Detector A readings
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <canvas ref="detector_A_readings" style="width:100%;height:300px"></canvas>
+                </div>
+            </div>
+        </div>
+        
     </div>
+    
+    
+    
   `,
 
     data() {
@@ -104,6 +120,7 @@ window.Dashboard = Vue.component('dashboard', {
         this.initSerialBox();
         this.initLocationMap();
         this.initPressureBox();
+        this.initDetectorAGraph();
     },
 
     methods: {
@@ -175,6 +192,35 @@ window.Dashboard = Vue.component('dashboard', {
                 }
                 tempData.push(value);
                 tempChart.update();
+            });
+        },
+
+        initDetectorAGraph() {
+            const detASize = 100;
+            let detAData = [];
+
+
+            let detAChart = new Chart(this.$refs.detector_A_readings, {
+                type: 'line',
+                options: {
+					animation: false
+				},
+                data: {
+                    labels: Array.from(Array(detASize).keys()),
+                    datasets: [{
+                        label: 'ADC measurement',
+                        data: detAData,
+                        backgroundColor: "rgba(153,51,255,0.4)"
+                    }]
+                }
+            });
+
+            events.on('set_detA_reading', (arr) => {
+                // Add data to chart
+                // empty the original array
+                detAData.splice(0,detAData.length);
+                detAData.push(...arr);
+                detAChart.update();
             });
         },
 
