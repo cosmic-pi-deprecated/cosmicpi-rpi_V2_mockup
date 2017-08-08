@@ -129,6 +129,30 @@ class location_provider():
         with self.output_lock:
             return copy.deepcopy(self.location_data)
 
+class Combined_location_provider(location_provider, threading.Thread):
+    def __init__(self):
+        # first start ourself
+        location_provider.__init__(self, "Combined GPS and geoIP")
+        threading.Thread.__init__(self)
+        # now enable the other providers
+        self.gps = GPS_location_provider()
+        self.geoIP = IP_location_provider()
+        # start our own thread
+        self.start()
+
+    def run(self):
+        while True:
+            # check both providers
+            gps_loc = self.gps.get_last_location_data()
+            geoIP_loc = self.geoIP.get_last_location_data()
+            if gps_loc['err_lon_meter'] <= geoIP_loc['err_lon_meter']:
+                internal_localion_data = gps_loc
+            else:
+                internal_localion_data = geoIP_loc
+            self._update_location_data(internal_localion_data)
+            time.sleep(0.05)
+
+
 class IP_location_provider(location_provider, threading.Thread):
     def __init__(self):
         location_provider.__init__(self, "freegeoip")
