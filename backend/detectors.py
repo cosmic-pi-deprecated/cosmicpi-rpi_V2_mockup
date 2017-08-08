@@ -54,11 +54,11 @@ class simulated_detector(detector, threading.Thread):
         stack = []
         for i in range(numPeaks):
             # set peak position for the stack
-            # the variance of this is probably pure gaussian statistics
+            # the variance of this is probably follows gaussian statistics
             peak_pos = int(np.random.normal(int(self.length_of_event_stack / 2), 1.0, 1)[0])
-            #peak_pos = np.random.poisson(int(self.length_of_event_stack / 2), 1)[0]
             # generate peak for stack A
             # we assume that all readout noise is poisson, which might be a flawed assumption
+            # as well all peaks have about the same height
             for i in range(self.length_of_event_stack):
                 if i < peak_pos:
                     stack.append(np.random.poisson(int(100 * self.noise_to_signal_ratio), 1)[0])
