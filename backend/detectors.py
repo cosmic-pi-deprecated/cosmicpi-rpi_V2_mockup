@@ -75,7 +75,7 @@ class simulated_detector(detector, threading.Thread):
                         int((100 - 100 * self.noise_to_signal_ratio) / (i - mid_B) + 100 * self.noise_to_signal_ratio),
                         1)[0])
 
-        return [stack_A, stack_B]
+        return [np.asarray(stack_A).tolist(), np.asarray(stack_B).tolist()]
 
 
     def _get_simulated_detector_data(self):
