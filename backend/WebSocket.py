@@ -16,7 +16,6 @@ class SingleClientHandler(WebSocket):
     # @override
     def handleConnected(self):
         print('New client connected:', self.address)
-        self.sendValue('location', {'latitude': 46.2044, 'longitude': 6.1432});
 
         EventEmitter.get().on_temperature += lambda x: self.sendValue('temperature', x)
         EventEmitter.get().on_pressure += lambda x: self.sendValue('pressure', x)

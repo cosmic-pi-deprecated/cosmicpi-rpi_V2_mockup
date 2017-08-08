@@ -120,15 +120,24 @@ window.Dashboard = Vue.component('dashboard', {
         },
 
         initLocationMap() {
+			let marker = null;
+			let map = khtml.maplib.Map(this.$refs.location);
+			let mapZoomed = false;
+			
             events.on('location', (value) => {
-                let map = khtml.maplib.Map(this.$refs.location);
-                map.centerAndZoom(
-                    new khtml.maplib.LatLng(
-                        value.latitude, value.longitude
-                    ), 10
-                );
-
-                let marker = new khtml.maplib.overlay.Marker({
+				if (mapZoomed === false) {
+					mapZoomed = true;
+					map.centerAndZoom(
+						new khtml.maplib.LatLng(
+							value.latitude, value.longitude
+						), 16
+					);
+				}
+                
+				if (marker !== null) {
+					marker.destroy();
+				}
+                marker = new khtml.maplib.overlay.Marker({
                     position: new khtml.maplib.LatLng(value.latitude, value.longitude),
                     map: map,
                     title: 'My Cosmic Pi'
