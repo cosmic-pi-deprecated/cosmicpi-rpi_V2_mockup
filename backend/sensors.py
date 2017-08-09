@@ -163,7 +163,17 @@ class IP_location_provider(location_provider, threading.Thread):
     def run(self):
         while True:
             send_url = 'http://freegeoip.net/json'
-            r = requests.get(send_url)
+            try:
+                r = requests.get(send_url)
+            except requests.exceptions.ConnectionError as e:
+                #e = sys.exc_info()[0]
+                #print(e)
+                print("Unable to connect to the GeopIP-server!")
+                print("Following ConnectionError occurred:", end='')
+                print(e)
+                print("Will retry in one minute.")
+                time.sleep(60)
+                continue
             j = json.loads(r.text)
             lat = j['latitude']
             lon = j['longitude']
