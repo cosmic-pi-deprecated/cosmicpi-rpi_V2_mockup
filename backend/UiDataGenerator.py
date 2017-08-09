@@ -37,7 +37,6 @@ class UiDataGenerator(object):
 
         # get location data
         location_data = self._location.get_last_location_data()
-        # TODO: remove a strange bug here!
         EventEmitter.get().on_location({'latitude': location_data['lat'], 'longitude': location_data['lon']})
 
         # get detector data
