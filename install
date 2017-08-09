@@ -1,2 +1,36 @@
-sudo pip install git+https://github.com/dpallot/simple-websocket-server.git
-sudo pip install events
+#!/bin/bash
+
+echo "--- Please make sure that the following has been done in raspi-config:"
+echo "--- I2C is ENABLED"
+echo "--- The serial login shell is DISABLED"
+echo "--- The Serial interface is ENABLED"
+read -p "--- Press [Enter] key to continue..."
+
+echo "--- Installing needed packages from apt"
+
+sudo apt-get install gpsd gpsd-clients python-gps htop
+sudo apt-get install python-dev
+
+echo "--- Copying configuration"
+
+sudo cp -f install_files/gpsd /etc/default/
+sudo cp -f install_files/90-i2c.rules /etc/udev/rules.d/
+
+echo "--- Installing needed python packages via pip3"
+
+sudo pip3 install git+https://github.com/dpallot/simple-websocket-server.git
+sudo pip3 install events
+sudo pip3 install git+https://github.com/tommyjcarpenter/gps-python3
+
+echo "--- Installing RTIMULib2 via git"
+git clone https://github.com/RTIMULib/RTIMULib2
+cd RTIMULib2/Linux/python/
+sudo python setup.py build
+sudo python setup.py install
+cd ../../../
+sudo rm -fr RTIMULib2/
+
+echo "--- Restarting gpsd"
+sudo systemctl restart gpsd
+
+echo "--- Finished setup!"
