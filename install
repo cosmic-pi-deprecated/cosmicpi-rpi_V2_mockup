@@ -10,6 +10,7 @@ echo "--- Installing needed packages from apt"
 
 sudo apt-get install gpsd gpsd-clients python-gps htop
 sudo apt-get install python-dev
+sudo apt-get install git util-linux procps hostapd iproute2 iw haveged dnsmasq
 
 echo "--- Copying configuration"
 
@@ -29,6 +30,13 @@ sudo python setup.py build
 sudo python setup.py install
 cd ../../../
 sudo rm -fr RTIMULib2/
+
+echo "--- Installing create_ap via git"
+git clone https://github.com/oblique/create_ap --depth 1
+cd create_ap
+sudo make install
+cd ..
+sudo rm -rf create_ap
 
 echo "--- Restarting gpsd"
 sudo systemctl restart gpsd
