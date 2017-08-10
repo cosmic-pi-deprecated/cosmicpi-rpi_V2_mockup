@@ -1,6 +1,6 @@
 # Cosmic Pi User Interface
 
-![Dashboard](./docs/preview.gif)
+[![Dashboard](https://img.youtube.com/vi/OOo4G47FLfk/0.jpg)](https://www.youtube.com/watch?v=OOo4G47FLfk "Cosmicpi UI demonstration")
 
 ## Installation
 ```./install```
