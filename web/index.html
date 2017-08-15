@@ -27,7 +27,7 @@
                 <li>
                     <a href="https://cosmicpi.github.io/" target="_blank">
                         <i class="fa fa-wechat"></i>
-                        <span class="hideable">Website <i class="fa fa-external-link"></i></span>
+                        <span class="hideable">{{ $t("Website") }} <i class="fa fa-external-link"></i></span>
                     </a>
 
                     <hr />
@@ -36,21 +36,21 @@
                 <li>
                     <router-link to="/">
                         <i class="fa fa-dashboard"></i>
-                        <span class="hideable">Dashboard</span>
+                        <span class="hideable">{{ $t("Dashboard") }}</span>
                     </router-link>
                 </li>
 
                 <li>
                     <router-link to="/settings">
                         <i class="fa fa-gears"></i>
-                        <span class="hideable">Settings</span>
+                        <span class="hideable">{{ $t("Settings") }}</span>
                     </router-link>
                 </li>
 
                 <li>
                     <router-link to="/about">
                         <i class="fa fa-info-circle"></i>
-                        <span class="hideable">About</span>
+                        <span class="hideable">{{ $t("About") }}</span>
                     </router-link>
                 </li>
             </ul>
@@ -58,9 +58,16 @@
             <hr />
 
             <p>
-                <a href="#" v-on:click.prevent="onChange('clouds')">Clouds</a> |
-                <a href="#" v-on:click.prevent="onChange('mountains')">Mountains</a> |
-                <a href="#" v-on:click.prevent="onChange('nasa')">NASA</a>
+                <a href="#" class="hideable" v-on:click.prevent="onChange('clouds')">{{ $t("Clouds") }}</a> |
+                <a href="#" class="hideable" v-on:click.prevent="onChange('mountains')">{{ $t("Mountains") }}</a> |
+                <a href="#" class="hideable" v-on:click.prevent="onChange('nasa')">{{ $t("NASA") }}</a>
+            </p>
+
+            <hr />
+
+            <p>
+                <a href="#" class="hideable" v-on:click.prevent="onLanguageChange('en')">English</a> |
+                <a href="#" class="hideable" v-on:click.prevent="onLanguageChange('zh')">中文</a>
             </p>
 
             <hr />
@@ -86,6 +93,8 @@
     <script src="js/cosmicpi.js"></script>
     <script src="js/vue.min.js"></script>
     <script src="js/vue-router.min.js"></script>
+    <script src="js/vue-i18n.min.js"></script>
+    <script src="js/translations.js"></script>
 
 
     <script src="components/Dashboard.js"></script>
@@ -94,6 +103,10 @@
     <script src="components/About.js"></script>
 
     <script>
+    const i18n = new VueI18n({
+        locale: 'en',
+        messages: window.Messages
+    });
 
     const router = new VueRouter({
         routes: [
@@ -104,11 +117,15 @@
         ]
     });
     const app = new Vue({
+        i18n: i18n,
         router: router,
         methods: {
             onChange(name) {
                 node = document.getElementById('app');
                 node.style.backgroundImage = "url('../images/background_" + name + ".jpg')";
+            },
+            onLanguageChange(val) {
+                this.$i18n.locale = val;
             }
         }
     }).$mount('#app')

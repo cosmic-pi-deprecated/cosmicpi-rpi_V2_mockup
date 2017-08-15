@@ -10,7 +10,7 @@ window.Dashboard = Vue.component('dashboard', {
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ temperatureValue }}</div>
-                            <div>Temperature</div>
+                            <div>{{ $t("Temperature") }}</div>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@ window.Dashboard = Vue.component('dashboard', {
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ pressureValue }}</div>
-                            <div>Pressure</div>
+                            <div>{{ $t("Pressure") }}</div>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ window.Dashboard = Vue.component('dashboard', {
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge" style="font-size: 24px">{{ serialValue }}</div>
-                            <div>Hardware Serial</div>
+                            <div>{{ $t("Hardware Serial") }}</div>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@ window.Dashboard = Vue.component('dashboard', {
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Temperature
+                    $t("Temperature")
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -66,7 +66,7 @@ window.Dashboard = Vue.component('dashboard', {
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Event Count
+                    {{ $t("Event Count") }}
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -78,7 +78,7 @@ window.Dashboard = Vue.component('dashboard', {
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Detector ADC readings
+                    {{ $t("Detector ADC readings") }}
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -90,7 +90,7 @@ window.Dashboard = Vue.component('dashboard', {
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Location
+                    {{ $t("Location") }}
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -157,7 +157,7 @@ window.Dashboard = Vue.component('dashboard', {
                 marker = new khtml.maplib.overlay.Marker({
                     position: new khtml.maplib.LatLng(value.latitude, value.longitude),
                     map: map,
-                    title: 'My Cosmic Pi'
+                    title: i18n.t('My Cosmic Pi')
                 });
             });
         },
@@ -210,11 +210,11 @@ window.Dashboard = Vue.component('dashboard', {
                 data: {
                     labels: labelsArray,
                     datasets: [{
-                        label: 'Detector A: ADC measurement',
+                        label: i18n.t('greetingDetector A: ADC measurement'),
                         data: detAData,
                         backgroundColor: "rgba(153,51,255,0.4)"
                     }, {
-                        label: 'Detector B: ADC measurement',
+                        label: i18n.t('Detector B: ADC measurement'),
                         data: detBData,
                         backgroundColor: "rgba(255,150,0,0.4)"
                     }]
@@ -244,7 +244,7 @@ window.Dashboard = Vue.component('dashboard', {
                 data: {
                     labels: Array.from(Array(eventSize).keys()),
                     datasets: [{
-                        label: 'combined_event_count',
+                        label: i18n.t('Combined Event Count'),
                         data: eventData,
                         backgroundColor: "rgba(153,51,255,0.4)"
                     }]
