@@ -26,6 +26,7 @@ class IMU_Reader():
 
     def __init__(self, IMU_SETTINGS_FILE):
         # ---------  Set up IMU
+        self.usage_lock = threading.Lock()
         print("Using settings file " + IMU_SETTINGS_FILE + ".ini")
         if not os.path.exists(IMU_SETTINGS_FILE + ".ini"):
             print("Settings file does not exist, will be created")
@@ -65,12 +66,13 @@ class IMU_Reader():
             raise NotImplementedError("For now no averaging has been implemented! Only the usage of 1 is feasible.")
         average = 1
 
-        # gat Data from IMU
-        while self.imu.IMURead() is not True:
+        with self.usage_lock:
+            # gat Data from IMU
+            while self.imu.IMURead() is not True:
+                time.sleep(self.poll_interval * 1.0 / 1000.0)
+            data = self.imu.getIMUData()
+            (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = self.pressure.pressureRead()
             time.sleep(self.poll_interval * 1.0 / 1000.0)
-        data = self.imu.getIMUData()
-        (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = self.pressure.pressureRead()
-        time.sleep(self.poll_interval * 1.0 / 1000.0)
 
         return data
 

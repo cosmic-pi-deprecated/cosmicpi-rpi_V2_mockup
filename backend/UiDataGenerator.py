@@ -2,6 +2,7 @@ from EventEmitter import EventEmitter
 import time
 import random
 import threading
+import RPi.GPIO as GPIO
 
 """
 This module only generates events. `EventEmitter.get()` should be implemented into the core
@@ -26,6 +27,9 @@ class UiDataGenerator(object):
         thread.start()
 
     def _push_data_to_UI(self, data):
+        # turn the LED on when there comes data from the detector
+        GPIO.output(self.LED_Pin, True)
+
         # get imu data
         IMU_data = self._imu.get_IMU_and_Pressure_data()
         # temperature
@@ -47,15 +51,17 @@ class UiDataGenerator(object):
         EventEmitter.get().on_serial(self._serial)
 
         # old printing
-        print("Fresh new data now at the detector!")
+        '''print("Fresh new data now at the detector!")
         print(data)
         # print the last GPS data
         location_data = self._location.get_last_location_data()
-        print("--> GPS: ", location_data)
+        print("--> GPS: ", location_data)'''
         # get imu data
         IMU_data = self._imu.get_IMU_and_Pressure_data()
         # print imu data
         self._imu.print_IMU_and_pressure_data(IMU_data)
+        # turn LED off
+        GPIO.output(self.LED_Pin, False)
 
     def __init__(self, detector, imu, location, serial):
         # the function must recieve an already initalized detector, imu and gps
@@ -63,6 +69,11 @@ class UiDataGenerator(object):
         self._imu = imu
         self._location = location
         self._serial = serial
+        # set up the LED
+        self.LED_Pin = 11
+        GPIO.setmode(GPIO.BOARD)  ## Use board pin numbering
+        GPIO.setup(self.LED_Pin, GPIO.OUT)  ## Setup GPIO Pin 11 to OUT
+
 
 
     def subscribe_to_detector(self):

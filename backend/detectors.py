@@ -2,6 +2,7 @@ import threading
 import time
 from events import Events
 import numpy as np
+import math
 
 
 class detector(Events):
@@ -30,12 +31,13 @@ class detector(Events):
 
 
 class simulated_detector(detector, threading.Thread):
-    def __init__(self, average_number_of_events = 4, noise_to_signal_ratio = 0.2, length_of_event_stack = 20):
+    def __init__(self, IMU_Reader, average_number_of_events = 5, noise_to_signal_ratio = 0.2, length_of_event_stack = 20):
         detector.__init__(self, "Simulator", 0.1)
         threading.Thread.__init__(self)
         self.average_number_of_events = average_number_of_events
         self.noise_to_signal_ratio = noise_to_signal_ratio
         self.length_of_event_stack = length_of_event_stack
+        self.imu = IMU_Reader
         # start the detector
         self.start()
 
@@ -73,11 +75,20 @@ class simulated_detector(detector, threading.Thread):
 
 
     def _get_simulated_detector_data(self):
+        # calculate the directional reduction
+        # Todo: The reduction is linear at the moment, but it should be cos^2
+        # accel returns in x,y,z-directen the number of g
+        accel_data = self.imu.get_IMU_and_Pressure_data()['accel']
+        # calculate length of x+y (minimum is 0, maximum is 1)
+        xy_length = math.sqrt(accel_data[0]**2 + accel_data[1]**2)
+        count_reduction_factor = math.sqrt((1-xy_length) ** 2)
+
         # produce some data
         internal_timestamp_of_update = time.time()
-        event_counter_A = np.random.poisson(int(self.average_number_of_events / self.noise_to_signal_ratio), 1)[0]
-        event_counter_B = np.random.poisson(int(self.average_number_of_events / self.noise_to_signal_ratio), 1)[0]
-        event_counter_AB = np.random.poisson(int(self.average_number_of_events), 1)[0]
+        reduced_num_events = self.average_number_of_events * count_reduction_factor
+        event_counter_A = np.random.poisson(int(reduced_num_events / self.noise_to_signal_ratio), 1)[0]
+        event_counter_B = np.random.poisson(int(reduced_num_events / self.noise_to_signal_ratio), 1)[0]
+        event_counter_AB = np.random.poisson(int(reduced_num_events), 1)[0]
         # produce event stack
         event_stack_AB = [self._generate_stack_for_events(event_counter_AB), self._generate_stack_for_events(event_counter_AB)]
 

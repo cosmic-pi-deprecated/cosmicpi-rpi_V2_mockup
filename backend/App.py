@@ -55,7 +55,7 @@ else:
     raise RuntimeError("No location provider was specified! Please enable at least one in: " + str(CONFIG_FILE))
 
 # start our detector
-detector = detectors.simulated_detector()
+detector = detectors.simulated_detector(imu)
 
 # start generator and subscribe to the detector
 UiGenerator = UiDataGenerator(detector, imu, location, sensors.getserial())
