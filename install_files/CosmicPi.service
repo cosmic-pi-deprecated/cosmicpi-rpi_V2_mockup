@@ -1,0 +1,9 @@
+[Unit]
+Description=Software for the CosmicPi detector
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/cosmicpi-ui/backend/App.py
+WorkingDirectory=/home/pi/cosmicpi-ui/backend/
+
+[Install]
+WantedBy=multi-user.target

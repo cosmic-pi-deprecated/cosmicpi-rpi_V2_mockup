@@ -16,6 +16,7 @@ echo "--- Copying configuration"
 
 sudo cp -f install_files/gpsd /etc/default/
 sudo cp -f install_files/90-i2c.rules /etc/udev/rules.d/
+sudo cp -f install_files/CosmicPi.service /etc/systemd/system/
 
 echo "--- Installing needed python packages via pip3"
 
@@ -39,6 +40,8 @@ cd ..
 sudo rm -rf create_ap
 
 echo "--- Restarting gpsd"
+sudo systemctl daemon-reload
 sudo systemctl restart gpsd
 
 echo "--- Finished setup!"
+
