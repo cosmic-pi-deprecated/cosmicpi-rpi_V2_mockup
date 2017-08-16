@@ -11,7 +11,10 @@ class SingleClientHandler(WebSocket):
 
     # @override
     def handleMessage(self):
-        print('Message received:', self.data)
+        json_data = json.loads(self.data)
+        if json_data['action'] == 'wifiSetting':
+            EventEmitter.get().on_wifi_setting(json_data)
+
 
     # @override
     def handleConnected(self):
@@ -45,3 +48,6 @@ class WebSocket(object):
         thread = threading.Thread(target=web_socket_handler.run)
         thread.start()
 
+
+# This is how to get values
+EventEmitter.get().on_wifi_setting += lambda x: print('SSID:', x['ssid'], '; Password: ', x['password'])
