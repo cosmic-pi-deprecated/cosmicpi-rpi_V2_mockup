@@ -14,11 +14,11 @@ window.Messages = {
         'Detector A: ADC measurement':'探测器A',
         'Detector B: ADC measurement':'探测器B',
         'Location':'位置',
-        'SSID':'电子邮箱',
+        'SSID':'无线网络名称',
         'Password':'密码',
         'Connect':'提交',
         'Wifi Settings':'Wifi 设置',
-        'Enter SSID':'输入',
+        'Enter SSID':'输入无线网络名称',
         'Enter password':'输入密码',
     },
     'en': {
