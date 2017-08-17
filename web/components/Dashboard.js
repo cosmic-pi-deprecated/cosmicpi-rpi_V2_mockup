@@ -54,7 +54,7 @@ window.Dashboard = Vue.component('dashboard', {
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    $t("Temperature")
+                    {{ $t("Temperature") }}
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -178,7 +178,7 @@ window.Dashboard = Vue.component('dashboard', {
                 data: {
                     labels: Array.from(Array(tempSize).keys()),
                     datasets: [{
-                        label: 'temperature',
+                        label: i18n.t('Temperature'),
                         data: tempData,
                         backgroundColor: "rgba(153,51,255,0.4)"
                     }]
@@ -210,7 +210,7 @@ window.Dashboard = Vue.component('dashboard', {
                 data: {
                     labels: labelsArray,
                     datasets: [{
-                        label: i18n.t('greetingDetector A: ADC measurement'),
+                        label: i18n.t('Detector A: ADC measurement'),
                         data: detAData,
                         backgroundColor: "rgba(153,51,255,0.4)"
                     }, {
