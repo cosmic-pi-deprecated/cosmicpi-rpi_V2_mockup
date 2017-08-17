@@ -85,27 +85,27 @@
         </div>
     </div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <script src="js/chart.min.js"></script>
-    <script src="js/khtml_all.js"></script>
-    <script src="js/events.js"></script>
-    <script src="js/cosmicpi.js"></script>
-    <script src="js/vue.min.js"></script>
-    <script src="js/vue-router.min.js"></script>
-    <script src="js/vue-i18n.min.js"></script>
-    <script src="js/translations.js"></script>
+	<script src="js/libs/jquery.min.js"></script>
+	<script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/chart.min.js"></script>
+    <script src="js/libs/khtml_all.js"></script>
+    <script src="js/libs/events.js"></script>
+    <script src="js/App.js"></script>
+    <script src="js/libs/vue.min.js"></script>
+    <script src="js/libs/vue-router.min.js"></script>
+    <script src="js/libs/vue-i18n.min.js"></script>
+    <script src="js/models/TranslationModel.js"></script>
 
 
-    <script src="components/Dashboard.js"></script>
-    <script src="components/PageNotFound.js"></script>
-    <script src="components/Settings.js"></script>
-    <script src="components/About.js"></script>
+    <script src="js/components/Dashboard.js"></script>
+    <script src="js/components/PageNotFound.js"></script>
+    <script src="js/components/Settings.js"></script>
+    <script src="js/components/About.js"></script>
 
     <script>
     const i18n = new VueI18n({
         locale: 'en',
-        messages: window.Messages
+        messages: window.TranslationModel
     });
 
     const router = new VueRouter({

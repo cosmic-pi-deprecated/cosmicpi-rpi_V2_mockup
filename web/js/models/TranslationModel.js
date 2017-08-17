@@ -1,4 +1,4 @@
-window.Messages = {
+window.TranslationModel = {
     'cn': {
         'Dashboard': '数据面板',
         'description':'Cosmic Pi 项目旨在建立世界最大的开源分布式宇宙线望远镜. 你也可以成为这个望远镜的一个像素点！',
