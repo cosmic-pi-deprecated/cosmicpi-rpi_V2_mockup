@@ -20,6 +20,8 @@ window.Messages = {
         'Wifi Settings':'Wifi 设置',
         'Enter SSID':'输入无线网络名称',
         'Enter password':'输入密码',
+        'Clouds':'云',
+        'Mountains':'山脉',
     },
     'en': {
         'description': 'The Cosmic Pi project aims to build the world\'s ' +
