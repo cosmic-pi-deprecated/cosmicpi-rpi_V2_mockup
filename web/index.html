@@ -21,7 +21,7 @@
                 <img src="images/logo_small_transp.png" id="logo" />
             </a>
 
-            <hr />
+            <hr class="hideable" />
 
             <ul>
                 <li>
@@ -55,22 +55,22 @@
                 </li>
             </ul>
 
-            <hr />
+            <hr class="hideable" />
 
-            <p>
-                <a href="#" class="hideable" v-on:click.prevent="onChange('clouds')">{{ $t("Clouds") }}</a> |
-                <a href="#" class="hideable" v-on:click.prevent="onChange('mountains')">{{ $t("Mountains") }}</a> |
-                <a href="#" class="hideable" v-on:click.prevent="onChange('nasa')">{{ $t("NASA") }}</a>
+            <p class="hideable">
+                <a href="#" v-on:click.prevent="onChange('clouds')">{{ $t("Clouds") }}</a> |
+                <a href="#" v-on:click.prevent="onChange('mountains')">{{ $t("Mountains") }}</a> |
+                <a href="#" v-on:click.prevent="onChange('nasa')">{{ $t("NASA") }}</a>
             </p>
 
-            <hr />
+            <hr class="hideable" />
 
-            <p>
-                <a href="#" class="hideable" v-on:click.prevent="onLanguageChange('en')">English</a> |
-                <a href="#" class="hideable" v-on:click.prevent="onLanguageChange('cn')">中文</a>
+            <p class="hideable">
+                <a href="#" v-on:click.prevent="onLanguageChange('en')">English</a> |
+                <a href="#" v-on:click.prevent="onLanguageChange('cn')">中文</a>
             </p>
 
-            <hr />
+            <hr class="hideable" />
 
             <p class="hideable">
                 Copyright © Cosmic Pi Inc. 2015. <br />All Rights Reserved. <br />
