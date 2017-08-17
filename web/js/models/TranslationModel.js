@@ -6,7 +6,7 @@ window.TranslationModel = {
         'Settings':'设置',
         'About':'关于',
         'Temperature':'温度',
-        'Pressure':'气压',
+        'Pressure':'气压 ',
         'Hardware Serial':'硬件序列',
         'Event Count':'事件统计',
         'Combined Event Count':'综合事件数',
