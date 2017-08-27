@@ -4,15 +4,16 @@
 
 ## Installation
 Clone this repository to the home folder of your CosmicPi (e.g. `/home/pi`)
-then:
+then run:
+
 ```./install```
 
 ## Run
 *Optional:* Reboot to automatically start the software as a systemd service
 
-**Start as service with:** `sudo systemctl start CosmicPi`
+**Start** as service with:** `sudo systemctl start CosmicPi`
 
-**Stop as service with:** `sudo systemctl stop CosmicPi`
+**Stop** as service with:** `sudo systemctl stop CosmicPi`
 
 The application is available at:
 
@@ -22,6 +23,6 @@ When used as an access point the application is available at:
 
 `http://cosmicpi.local/` or `http://192.168.12.1/`
 
-### For debugging
+#### For debugging
 Stop the service and type `./run`
 
