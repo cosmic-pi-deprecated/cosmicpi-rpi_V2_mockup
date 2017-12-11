@@ -6,7 +6,7 @@
 Clone this repository to the home folder of your CosmicPi (e.g. `/home/pi`)
 then run:
 
-```./install```
+```bash ./install```
 
 ## Run
 *Optional:* Reboot to automatically start the software as a systemd service
