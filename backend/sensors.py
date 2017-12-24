@@ -148,10 +148,10 @@ class Combined_location_provider(location_provider, threading.Thread):
             gps_loc = self.gps.get_last_location_data()
             geoIP_loc = self.geoIP.get_last_location_data()
             if gps_loc['err_lon_meter'] <= geoIP_loc['err_lon_meter']:
-                internal_localion_data = gps_loc
+                internal_location_data = gps_loc
             else:
-                internal_localion_data = geoIP_loc
-            self._update_location_data(internal_localion_data)
+                internal_location_data = geoIP_loc
+            self._update_location_data(internal_location_data)
             time.sleep(0.05)
 
 
@@ -179,17 +179,17 @@ class IP_location_provider(location_provider, threading.Thread):
             j = json.loads(r.text)
             lat = j['latitude']
             lon = j['longitude']
-            internal_localion_data = {}
-            internal_localion_data['lon'] = lon
-            internal_localion_data['lat'] = lat
-            internal_localion_data['alt'] = 0
-            internal_localion_data['err_lon_meter'] = 500
-            internal_localion_data['err_lat_meter'] = 500
-            internal_localion_data['err_alt_meter'] = 500
-            internal_localion_data['update_time_string'] = "NoTimeInGeoIP!"
-            internal_localion_data['_internal_timestamp'] = time.time()
+            internal_location_data = {}
+            internal_location_data['lon'] = lon
+            internal_location_data['lat'] = lat
+            internal_location_data['alt'] = 0
+            internal_location_data['err_lon_meter'] = 500
+            internal_location_data['err_lat_meter'] = 500
+            internal_location_data['err_alt_meter'] = 500
+            internal_location_data['update_time_string'] = "NoTimeInGeoIP!"
+            internal_location_data['_internal_timestamp'] = time.time()
             # update our loc data
-            self._update_location_data(internal_localion_data)
+            self._update_location_data(internal_location_data)
             time.sleep(5)
 
 
@@ -212,17 +212,17 @@ class GPS_location_provider(location_provider, threading.Thread):
         if report['class'] == 'TPV':
             # check if the report contains location and time data
             if ('time' in report) and ('lon' in report):
-                internal_localion_data = {}
-                internal_localion_data['lon'] = report['lon']
-                internal_localion_data['lat'] = report['lat']
-                internal_localion_data['alt'] = report['alt']
-                internal_localion_data['err_lon_meter'] = report['epx']
-                internal_localion_data['err_lat_meter'] = report['epy']
-                internal_localion_data['err_alt_meter'] = report['epv']
-                internal_localion_data['update_time_string'] = report['time']
-                internal_localion_data['_internal_timestamp'] = time.time()
+                internal_location_data = {}
+                internal_location_data['lon'] = report['lon']
+                internal_location_data['lat'] = report['lat']
+                internal_location_data['alt'] = report['alt']
+                internal_location_data['err_lon_meter'] = report['epx']
+                internal_location_data['err_lat_meter'] = report['epy']
+                internal_location_data['err_alt_meter'] = report['epv']
+                internal_location_data['update_time_string'] = report['time']
+                internal_location_data['_internal_timestamp'] = time.time()
                 # update our loc data
-                self._update_location_data(internal_localion_data)
+                self._update_location_data(internal_location_data)
             else:
                 pass;
 
